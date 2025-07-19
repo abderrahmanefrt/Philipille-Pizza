@@ -75,18 +75,25 @@ function Header(){
 return <h1 className='titre'>PhilipeVille Pizza</h1>
 }
 function Menu(){
+  const pizzas=pizzaList;
+  const numPizzas= pizzas.length;
 return (
-
-<ul>
+  <div>
 <h2 className='titremenu'>Our Menu</h2>
+{numPizzas > 0 ? (
+  <ul>
 { pizzaList.map((pizza, index)=> (
   <Pizza key={index} pizzaobj={pizza}/> 
 ))}
 </ul>
-)
+):( <p>we are still working on it come later</p>) }
+
+  </div>
+
+)}
 
 
-}
+
 function Footer(){
   const hour = new Date().getHours();
   const isOpen =hour >= 10 && hour < 23;
