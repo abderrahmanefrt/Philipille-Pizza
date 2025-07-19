@@ -88,8 +88,18 @@ return (
 
 }
 function Footer(){
+  const hour = new Date().getHours();
+  const isOpen =hour >= 10 && hour < 23;
   
-  return <h1 className='foot'>welcom in our Restaurant</h1>
+  return (
+  <footer>
+    <p className='footer-text'>
+      {isOpen ? "we are open come to visit us!": "we are closed!"}
+    </p>
+    <button className='btn'>Order</button>
+  </footer>
+  )
+
 
 }
 
@@ -98,7 +108,7 @@ function Pizza(props){
   return <li className='pizza-container'>
   <h3 className='pizza'>{props.pizzaobj.name}</h3>
   <img src={props.pizzaobj.photo} alt="props.name" />
-  <p className='ing'>{props.pizzaobj.ingredient}</p>
+  <p className='ing'>{props.pizzaobj.ingredients}</p>
   <p className='price'>{props.pizzaobj.price +10 +' Da'}</p>
   </li>
    
