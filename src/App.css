@@ -156,3 +156,28 @@ img {
     height: 200px;
   }
 }
+.pizza-container.soldout {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  background-color: #f5f5f5;
+}
+
+.pizza-container.soldout::after {
+  content: "ÉPUISÉ";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 10;
+}
+
+.pizza-container.soldout .price {
+  color: #e74c3c;
+  text-decoration: line-through;
+}

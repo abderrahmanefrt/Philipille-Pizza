@@ -1,4 +1,4 @@
-
+import React from 'react';
 import './App.css'
   const pizzaList = [
   {
@@ -59,7 +59,8 @@ import './App.css'
     name: "Truffle",
     ingredients: "White sauce, mozzarella, mushrooms, truffle oil, parmesan",
     photo: "../public/truffle.jpg",
-    price: 750
+    price: 750,
+    soldout: true,
   }
 ];
 function App() {
@@ -78,7 +79,7 @@ function Menu(){
   const pizzas=pizzaList;
   const numPizzas= pizzas.length;
 return (
-  <div>
+<React.Fragment>
 <h2 className='titremenu'>Our Menu</h2>
 {numPizzas > 0 ? (
   <ul>
@@ -88,7 +89,7 @@ return (
 </ul>
 ):( <p>we are still working on it come later</p>) }
 
-  </div>
+  </React.Fragment>
 
 )}
 
@@ -110,13 +111,13 @@ function Footer(){
 
 }
 
-function Pizza(props){
+function Pizza({pizzaobj}){
 
-  return <li className='pizza-container'>
-  <h3 className='pizza'>{props.pizzaobj.name}</h3>
-  <img src={props.pizzaobj.photo} alt="props.name" />
-  <p className='ing'>{props.pizzaobj.ingredients}</p>
-  <p className='price'>{props.pizzaobj.price +10 +' Da'}</p>
+  return <li className={`pizza-container ${pizzaobj.soldout ? 'soldout' : ''}`}>
+  <h3 className='pizza'>{pizzaobj.name}</h3>
+  <img src={pizzaobj.photo} alt="props.name" />
+  <p className='ing'>{pizzaobj.ingredients}</p>
+  <p className='price'>{pizzaobj.soldout? "Sold out" : pizzaobj.price +10 +' Da'}</p>
   </li>
    
 }
